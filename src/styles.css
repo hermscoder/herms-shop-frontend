@@ -40,6 +40,10 @@ body {
     -moz-osx-font-smoothing: grayscale
 }
 
+a {
+    text-decoration: none;
+}
+
 ul {
     margin: 0
 }
@@ -572,10 +576,6 @@ input.au-input.au-input-xl {
 
 .product-box img {
     width: 150px;
-}
-
-.product-box a {
-    text-decoration: none;
 }
 
 .items select {
