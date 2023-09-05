@@ -1,0 +1,15 @@
+.product-path {
+    font-size: small;
+}
+
+.product-path a {
+    color: #000;
+}
+
+.product-path a:hover {
+    text-decoration: underline;
+}
+
+.product-path span {
+    color: #8f8f8f;
+}

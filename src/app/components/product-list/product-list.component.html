@@ -1,6 +1,11 @@
 <div class="main-content">
     <div class="section-content section-content-p30">
         <div class="container-fluid">
+            <!-- <h4 class="badge bg-secondary">{{ this.currentCategoryName }}</h4> -->
+            <div *ngIf="this.currentCategoryId" class="product-path">
+                <a routerLink="/">Home</a> / <span>{{ this.currentCategoryName }}</span>
+                <hr>
+            </div>
             <div class="row">
                 <!-- loop over the collection of products -->
                 <div *ngFor="let product of products" class="col-md-3">

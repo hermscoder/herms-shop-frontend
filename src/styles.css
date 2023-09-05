@@ -829,6 +829,7 @@ a.primary-btn:hover {
 
 .active-link {
     font-weight: bold;
+    color: var(--anti-primary-color) !important;
 }
 
 /* 
