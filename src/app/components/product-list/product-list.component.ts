@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Observable, observable } from 'rxjs';
 import { Product } from 'src/app/common/product';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -25,17 +26,22 @@ export class ProductListComponent implements OnInit {
 
   listProducts() {
     const hasCategoryId: boolean = this.route.snapshot.paramMap.has('id');
+    let observable: Observable<Product[]> = this.productService.getProductList();
     if (hasCategoryId) {
       this.currentCategoryId = +this.route.snapshot.params['id'];
       this.currentCategoryName = this.route.snapshot.params['name'];
 
-      this.productService.getProductListByCategory(this.currentCategoryId).subscribe(
-        data => { this.products = data }
-      )
+      observable = this.productService.getProductListByCategory(this.currentCategoryId)
     } else {
-      this.productService.getProductList().subscribe(
-        data => { this.products = data }
-      );
+      const searchMode: boolean = this.route.snapshot.paramMap.has('keyword');
+      if (searchMode) {
+        const keyword = this.route.snapshot.params['keyword'];
+        observable = this.productService.searchProducts(keyword)
+      }
     }
+
+    observable.subscribe(
+      data => { this.products = data }
+    );
   }
 }
