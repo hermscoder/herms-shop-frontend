@@ -13,6 +13,7 @@ export class ProductListComponent implements OnInit {
   products: Product[] = [];
   currentCategoryId: number | null = null;
   currentCategoryName: string | null = '';
+  currentKeyword: string | null = '';
 
   pageNumber: number = 1;
   pageSize: number = 10;
@@ -44,22 +45,31 @@ export class ProductListComponent implements OnInit {
         .getProductListByCategoryPaginate(
           this.pageNumber - 1,
           this.pageSize,
-          this.currentCategoryId).subscribe(
-            data => {
-              this.products = data._embedded.products;
-              this.pageNumber = data.page.number + 1;
-              this.pageSize = data.page.size;
-              this.totalElements = data.page.totalElements;
-            });
+          this.currentCategoryId).subscribe(this.processResult());
     } else {
+
       const searchMode: boolean = this.route.snapshot.paramMap.has('keyword');
       if (searchMode) {
         const keyword = this.route.snapshot.params['keyword'];
-        this.productService.searchProducts(keyword).subscribe(
-          data => {
-            this.products = data
-          });
+
+        if (this.currentKeyword != keyword) {
+          this.resetPagination();
+          this.currentKeyword = keyword;
+        }
+
+        this.productService.searchProductsPaginate(
+          this.pageNumber - 1,
+          this.pageSize,
+          keyword).subscribe(this.processResult());
       }
+    }
+  }
+  private processResult() {
+    return (data: any) => {
+      this.products = data._embedded.products;
+      this.pageNumber = data.page.number + 1;
+      this.pageSize = data.page.size;
+      this.totalElements = data.page.totalElements;
     }
   }
 
