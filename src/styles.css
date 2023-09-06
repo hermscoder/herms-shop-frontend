@@ -3,6 +3,7 @@
     --secondary-color: #023b5c;
     --tertiary-color: #000000;
     --anti-primary-color: #000;
+    --main-content-background-color: #ffffff;
 }
 
 /* Original colors */
@@ -147,7 +148,7 @@ a:hover {
 }
 
 .main-content {
-    background-color: white;
+    background-color: var(--main-content-background-color);
     padding-top: 116px;
     min-height: 100vh;
 }
@@ -566,6 +567,36 @@ input.au-input.au-input-xl {
     padding: 10% 15% !important
 }
 
+
+/* 
+ * ----------------------------
+ * Breadcrumb
+ * ----------------------------
+ */
+.product-path {
+    font-size: small;
+}
+
+.product-path a {
+    color: #000;
+}
+
+.product-path a:hover {
+    text-decoration: underline;
+}
+
+.product-path span {
+    color: #8f8f8f;
+}
+
+.product-list {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+
 /* 
  * ----------------------------
  * Products List
@@ -793,8 +824,15 @@ table.table.table-bordered th {
     color: var(--anti-primary-color)
 }
 
+
 .detail-section {
-    margin-top: 60px
+    background-color: var(--main-content-background-color);
+    padding-top: 116px;
+    min-height: 100vh;
+}
+
+.detail-img {
+    width: 30%;
 }
 
 /* 
@@ -937,7 +975,7 @@ footer ul li {
 
     .main-content {
         padding-top: 50px;
-        padding-bottom: 100px
+        padding-bottom: 100pxc
     }
 
     .cart-area.d-n {
