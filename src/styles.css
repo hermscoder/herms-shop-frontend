@@ -792,8 +792,8 @@ table.table.table-bordered {
 }
 
 table.table.table-bordered th {
-    BACKGROUND: var(--primary-color);
-    color: #000000;
+    background-color: var(--secondary-color);
+    color: #ffffff;
     font-size: 14px;
     padding: 7px
 }
@@ -858,6 +858,11 @@ button.primary-btn {
     margin-top: 5px
 }
 
+button.primary-btn.small {
+    font-size: 12px;
+    padding: 3px 10px;
+}
+
 a.primary-btn {
     background: var(--tertiary-color);
     padding: 7px 20px;
@@ -877,6 +882,10 @@ a.primary-btn:hover {
 .active-link {
     font-weight: bold;
     color: var(--anti-primary-color) !important;
+}
+
+.midtext-link {
+    color: #186adc;
 }
 
 /* 

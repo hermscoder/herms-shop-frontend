@@ -12,6 +12,7 @@ import { ProductDetailsComponent } from './components/product-details/product-de
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CartStatusComponent } from './components/cart-status/cart-status.component';
 import { CartService } from './services/cart-service';
+import { CartDetailComponent } from './components/cart-detail/cart-detail.component';
 
 const routes: Routes = [
   { path: 'search/:keyword', component: ProductListComponent },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'category', component: ProductListComponent },
   { path: 'products/:id', component: ProductDetailsComponent },
   { path: 'products', component: ProductListComponent },
+  { path: 'cart-details', component: CartDetailComponent },
   { path: '', redirectTo: '/search/', pathMatch: 'full' },
   { path: '**', redirectTo: '/products' }
 ]
@@ -30,6 +32,7 @@ const routes: Routes = [
     SearchComponent,
     ProductDetailsComponent,
     CartStatusComponent,
+    CartDetailComponent,
   ],
   imports: [
     RouterModule.forRoot(routes),

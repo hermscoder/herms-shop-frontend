@@ -2,6 +2,7 @@ import { Subject } from "rxjs";
 import { CartItem } from "../common/cart-item";
 
 export class CartService {
+
     cartItems: CartItem[] = [];
     totalPrice: Subject<number> = new Subject<number>();
     totalQuantity: Subject<number> = new Subject<number>();
@@ -21,7 +22,26 @@ export class CartService {
         }
         this.computeCartTotals();
     }
-    private computeCartTotals() {
+
+    decrementQuantity(cartItem: CartItem) {
+        cartItem.quantity--;
+        if (cartItem.quantity === 0) {
+            this.removeItemFromCart(cartItem);
+        } else {
+            this.computeCartTotals();
+        }
+    }
+
+    removeItemFromCart(cartItemToRemove: CartItem) {
+        const itemToRemoveIndex = this.cartItems.findIndex(cartItem => cartItem.id == cartItemToRemove.id);
+        if (itemToRemoveIndex > -1) {
+            this.cartItems.splice(itemToRemoveIndex, 1);
+
+            this.computeCartTotals();
+        }
+    }
+
+    computeCartTotals() {
         console.log(JSON.stringify(this.cartItems));
         let totalPriceValue: number = 0;
         let totalQuantityValue: number = 0;

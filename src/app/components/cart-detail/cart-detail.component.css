@@ -1,0 +1,17 @@
+.quantity-control {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cart-details-table th {
+    color: var(--secondary-color);
+}
+
+.cart-details-table tr:not(.totals-row) {
+    border: none !important;
+    border-bottom: 1px solid #dee2e6 !important;
+}
+
+.cart-details-table tr:not {
+    border: none !important;
+}
