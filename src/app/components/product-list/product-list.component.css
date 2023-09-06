@@ -1,0 +1,26 @@
+.footer-pagination {
+    display: flex;
+    justify-content: flex-end;
+    text-align: center;
+    align-items: center;
+}
+
+.form-select {
+    color: var(--secondary-color);
+}
+
+ngb-pagination {
+    color: var(--secondary-color);
+}
+
+ngb-pagination ::ng-deep ul>li:not(.active)>a {
+    color: var(--secondary-color) !important;
+    border-radius: 0 !important;
+    border: none;
+}
+
+ngb-pagination ::ng-deep ul>li.active>a {
+    background-color: var(--secondary-color) !important;
+    color: var(--primary-color) !important;
+    border: none;
+}

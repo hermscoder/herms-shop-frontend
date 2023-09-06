@@ -3,19 +3,19 @@
         <div class="container-fluid">
             <div *ngIf="this.currentCategoryId" class="product-path">
                 <a routerLink="/">Home</a> / <span>{{ this.currentCategoryName }}</span>
-                <hr>
+                <hr />
             </div>
             <div class="row product-list">
                 <!-- loop over the collection of products -->
                 <div *ngFor="let product of products" class="col-md-3">
                     <div class="product-box">
                         <a routerLink="/products/{{ product.id }}">
-                            <img src="{{ product.imageUrl }}" class="img-responsive" alt="{{ product.name }}">
+                            <img src="{{ product.imageUrl }}" class="img-responsive" alt="{{ product.name }}" />
                         </a>
                         <a routerLink="/products/{{ product.id }}">
                             <h1>{{ product.name }}</h1>
                         </a>
-                        <div class="price">{{ product.unitPrice | currency: 'USD' }}</div>
+                        <div class="price">{{ product.unitPrice | currency : "USD" }}</div>
                         <a href="#" class="primary-btn">Add to cart</a>
                     </div>
                 </div>
@@ -24,6 +24,24 @@
                     No products found.
                 </div>
             </div>
+            <!-- begin footer -->
+            <div class="footer-pagination">
+                <ngb-pagination [(page)]="pageNumber" [pageSize]="pageSize" [collectionSize]="totalElements"
+                    [maxSize]="5" (pageChange)="listProducts()">
+                </ngb-pagination>
+                <span class="ms-5 small">Page Size</span>
+                <div class="ms-2">
+                    <select #myPageSelect (change)="updatePageSize(+myPageSelect.value)"
+                        class="form-select form-select-sm">
+                        <option selected="true">1</option>
+                        <option selected="true">5</option>
+                        <option>10</option>
+                        <option>20</option>
+                        <option>50</option>
+                    </select>
+                </div>
+            </div>
+            <!-- end footer -->
         </div>
     </div>
 </div>
