@@ -564,7 +564,7 @@ input.au-input.au-input-xl {
 }
 
 .main-content.page-m {
-    padding: 10% 15% !important
+    padding: 10% 30% 10% 5% !important
 }
 
 
@@ -650,18 +650,18 @@ input.au-input.au-input-xl {
  */
 
 .form-area {
-    background: #e5e5e5;
+    background: #ffffff;
     position: relative;
     margin-bottom: 45px;
     padding: 50px 20px;
-    border: 3px solid #ccc
+    border: 1px solid #ccc
 }
 
 .form-area h3 {
     position: absolute;
     top: -26px;
     left: 13px;
-    background: #e5e5e5;
+    background: #ffffff;
     padding: 10px 20px;
     font-weight: 500;
     z-index: 23;
@@ -679,6 +679,14 @@ input.au-input.au-input-xl {
 }
 
 .input-space input[type=text] {
+    width: 100%;
+    height: 40px;
+    outline: 0;
+    padding: 10px;
+    border: 1px solid #ccc
+}
+
+.input-space input[type=email] {
     width: 100%;
     height: 40px;
     outline: 0;
@@ -751,7 +759,7 @@ label.date {
     top: -1px;
     width: 9px;
     height: 15px;
-    border: solid var(--primary-color);
+    border: solid var(--secondary-color);
     border-width: 0 4px 4px 0;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
@@ -878,6 +886,8 @@ a.primary-btn:hover {
     background: var(--primary-color);
     color: var(--anti-primary-color);
 }
+
+
 
 .active-link {
     font-weight: bold;
