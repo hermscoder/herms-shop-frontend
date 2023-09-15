@@ -15,6 +15,7 @@ import { CartService } from './services/cart-service';
 import { CartDetailComponent } from './components/cart-detail/cart-detail.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ShopFormService } from './services/shop-form.service';
 
 const routes: Routes = [
   { path: 'search/:keyword', component: ProductListComponent },
@@ -45,7 +46,7 @@ const routes: Routes = [
     NgbModule,
     ReactiveFormsModule
   ],
-  providers: [ProductService, CartService],
+  providers: [ProductService, CartService, ShopFormService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

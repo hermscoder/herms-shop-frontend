@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ShopFormService } from 'src/app/services/shop-form.service';
 
 @Component({
   selector: 'app-checkout',
@@ -8,16 +9,20 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class CheckoutComponent implements OnInit {
 
-  years: number[] = [];
+  creditCardMonths: number[] = []
+  creditCardYears: number[] = [];
 
   checkoutFormGroup: FormGroup = this.buildCheckoutForm();
 
   totalPrice: number = 0;
   totalQuantity: number = 0;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder,
+    private shopFormService: ShopFormService) { }
 
   ngOnInit(): void {
+    this.shopFormService.getCreditCardMonths(1).subscribe(data => { this.creditCardMonths = data });
+    this.shopFormService.getCreditCardYears().subscribe(data => { this.creditCardYears = data });
   }
 
   onSubmit() {
@@ -37,8 +42,17 @@ export class CheckoutComponent implements OnInit {
 
   }
 
-  getYears(): number[] {
-    return Array.from({ length: 11 }, (_, index) => new Date().getFullYear() + index);
+  handleMonthsAndYears() {
+    const creditCardFormGroup = this.checkoutFormGroup.get('creditCard');
+    const currentYear: number = new Date().getFullYear();
+    const selectedYear: number = Number(creditCardFormGroup?.value.expirationYear);
+
+    let startingMonth: number = 1;
+    if (currentYear == selectedYear) {
+      startingMonth = new Date().getMonth() + 1;
+    }
+    this.shopFormService.getCreditCardMonths(startingMonth).subscribe(data => { this.creditCardMonths = data });
+
   }
 
   private buildCheckoutForm(): FormGroup {
