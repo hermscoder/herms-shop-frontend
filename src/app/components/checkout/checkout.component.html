@@ -12,6 +12,15 @@
                         <div class="col-md-9">
                             <div class="input-space">
                                 <input formControlName="firstName" type="text">
+                                <div *ngIf="firstName?.invalid && (firstName?.dirty || firstName?.touched)"
+                                    class="validation-alert">
+                                    <div *ngIf="firstName?.errors?.required || firstName?.errors?.notBlank">
+                                        First Name is required
+                                    </div>
+                                    <div *ngIf="firstName?.errors?.minlength">
+                                        First Name must be at least 2 characters long
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-2">
@@ -20,6 +29,15 @@
                         <div class="col-md-9">
                             <div class="input-space">
                                 <input formControlName="lastName" type="text">
+                                <div *ngIf="lastName?.invalid && (lastName?.dirty || lastName?.touched)"
+                                    class="validation-alert">
+                                    <div *ngIf="lastName?.errors?.required || lastName?.errors?.notBlank">
+                                        First Name is required
+                                    </div>
+                                    <div *ngIf="lastName?.errors?.minlength">
+                                        First Name must be at least 2 characters long
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-2">
@@ -28,6 +46,15 @@
                         <div class="col-md-9">
                             <div class="input-space">
                                 <input formControlName="email" type="email">
+                                <div *ngIf="email?.invalid && (email?.dirty || email?.touched)"
+                                    class="validation-alert">
+                                    <div *ngIf="email?.errors?.required || email?.errors?.notBlank">
+                                        Email is required
+                                    </div>
+                                    <div *ngIf="email?.errors?.pattern">
+                                        Email must be a valid email address
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
