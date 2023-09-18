@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Country } from 'src/app/common/country';
+import { State } from 'src/app/common/state';
 import { ShopFormService } from 'src/app/services/shop-form.service';
 
 @Component({
@@ -11,6 +13,9 @@ export class CheckoutComponent implements OnInit {
 
   creditCardMonths: number[] = []
   creditCardYears: number[] = [];
+  countries: Country[] = [];
+  shippingAddressStates: State[] = [];
+  billingAddressStates: State[] = [];
 
   checkoutFormGroup: FormGroup = this.buildCheckoutForm();
 
@@ -23,11 +28,22 @@ export class CheckoutComponent implements OnInit {
   ngOnInit(): void {
     this.shopFormService.getCreditCardMonths(1).subscribe(data => { this.creditCardMonths = data });
     this.shopFormService.getCreditCardYears().subscribe(data => { this.creditCardYears = data });
+    this.shopFormService.getCountries().subscribe(data => this.countries = data);
   }
 
   onSubmit() {
     console.log("Handling the submit button");
     console.log(this.checkoutFormGroup.get('customer')?.value)
+  }
+
+  getStates(formGroupName: string) {
+    const formGroup = this.checkoutFormGroup.get(formGroupName);
+    const countryCode = formGroup?.value.country.code;
+    if (formGroupName == 'shippingAddress') {
+      this.shopFormService.getStates(countryCode).subscribe(data => this.shippingAddressStates = data);
+    } else {
+      this.shopFormService.getStates(countryCode).subscribe(data => this.billingAddressStates = data);
+    }
   }
 
   copyShippingAddressToBillingAddress(event: Event) {
@@ -36,10 +52,13 @@ export class CheckoutComponent implements OnInit {
         .controls
         .billingAddress
         .setValue(this.checkoutFormGroup.controls.shippingAddress.value);
+
+      this.billingAddressStates = this.shippingAddressStates;
     } else {
       this.checkoutFormGroup.controls.billingAddress.reset();
-    }
 
+      this.billingAddressStates = [];
+    }
   }
 
   handleMonthsAndYears() {
