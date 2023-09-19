@@ -4,6 +4,7 @@ import { Country } from 'src/app/common/country';
 import { ShopValidator } from 'src/app/validators/shop-validator';
 import { State } from 'src/app/common/state';
 import { ShopFormService } from 'src/app/services/shop-form.service';
+import { CartService } from 'src/app/services/cart-service';
 
 @Component({
   selector: 'app-checkout',
@@ -24,12 +25,14 @@ export class CheckoutComponent implements OnInit {
   totalQuantity: number = 0;
 
   constructor(private formBuilder: FormBuilder,
-    private shopFormService: ShopFormService) { }
+    private shopFormService: ShopFormService,
+    private cartService: CartService) { }
 
   ngOnInit(): void {
     this.shopFormService.getCreditCardMonths(1).subscribe(data => { this.creditCardMonths = data });
     this.shopFormService.getCreditCardYears().subscribe(data => { this.creditCardYears = data });
     this.shopFormService.getCountries().subscribe(data => this.countries = data);
+    this.reviewCartDetails()
   }
 
   onSubmit() {
@@ -64,6 +67,16 @@ export class CheckoutComponent implements OnInit {
 
       this.billingAddressStates = [];
     }
+  }
+
+  reviewCartDetails() {
+
+    this.cartService.totalPrice.subscribe(
+      data => this.totalPrice = data
+    )
+    this.cartService.totalQuantity.subscribe(
+      data => this.totalQuantity = data
+    )
   }
 
   handleMonthsAndYears() {

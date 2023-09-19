@@ -1,11 +1,11 @@
-import { Subject } from "rxjs";
+import { BehaviorSubject, Subject } from "rxjs";
 import { CartItem } from "../common/cart-item";
 
 export class CartService {
 
     cartItems: CartItem[] = [];
-    totalPrice: Subject<number> = new Subject<number>();
-    totalQuantity: Subject<number> = new Subject<number>();
+    totalPrice: Subject<number> = new BehaviorSubject<number>(0);
+    totalQuantity: Subject<number> = new BehaviorSubject<number>(0);
 
     addToCart(newCartItem: CartItem) {
         let alreadyInCart = false;
