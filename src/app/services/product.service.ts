@@ -10,7 +10,8 @@ import { ProductCategory } from '../common/product-category';
 })
 export class ProductService {
 
-
+  // TODO use environments to enable configurations by env, like dev, test, prod
+  // private prodBaseUrl = 'http://herms-shop-api.onrender.com/api';
   private baseUrl = 'http://localhost:8080/api';
   private productUrl = `${this.baseUrl}/products`;
   private categoryUrl = `${this.baseUrl}/product-category`;
