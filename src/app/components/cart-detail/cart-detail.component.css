@@ -15,3 +15,17 @@
 .cart-details-table tr:not {
     border: none !important;
 }
+
+
+
+.cart-details-table .table-header :nth-child(1) {
+    width: 20%;
+}
+
+.cart-details-table .table-header :nth-child(2) {
+    width: 50%;
+}
+
+.cart-details-table .table-header :nth-child(3) {
+    width: 30%;
+}

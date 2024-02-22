@@ -10,7 +10,7 @@ import { State } from '../common/state';
 })
 export class ShopFormService {
   // TODO use environments to enable configurations by env, like dev, test, prod
-  // private prodBaseUrl = 'http://herms-shop-api.onrender.com/api';
+  // private prodBaseUrl = 'https://herms-shop-api.onrender.com/api';
   private baseUrl = 'http://localhost:8080/api';
   private countriesUrl = `${this.baseUrl}/countries`;
   private statesUrl = `${this.baseUrl}/states`;

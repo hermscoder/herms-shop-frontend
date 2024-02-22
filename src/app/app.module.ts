@@ -49,4 +49,10 @@ const routes: Routes = [
   providers: [ProductService, CartService, ShopFormService],
   bootstrap: [AppComponent]
 })
+
+
 export class AppModule { }
+
+export enum HermsShopRoutes {
+  PRODUCTS = '/products'
+}

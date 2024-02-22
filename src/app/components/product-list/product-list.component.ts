@@ -64,6 +64,11 @@ export class ProductListComponent implements OnInit {
           this.pageNumber - 1,
           this.pageSize,
           keyword).subscribe(this.processResult());
+      } else {
+        this.productService.searchProductsPaginate(
+          this.pageNumber - 1,
+          this.pageSize,
+          '').subscribe(this.processResult());
       }
     }
   }
