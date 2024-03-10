@@ -1,0 +1,47 @@
+.security-btn {
+    position: relative;
+    right: 0;
+    min-width: 95px;
+    color: #fff;
+    border: 10px solid var(--secondary-color);
+    background: var(--secondary-color)
+}
+
+.security-btn:hover {
+    background: var(--tertiary-color);
+    border: 10px solid var(--tertiary-color);
+}
+
+/* .security-btn>i {
+    font-size: 20px;
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%)
+} */
+
+.login-status-header {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex
+}
+
+.login-status-user-info {
+    line-height: 43px;
+    border: 1px;
+    padding: 0 17px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    transition: all .5s ease
+}
